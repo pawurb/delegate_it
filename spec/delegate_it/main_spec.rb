@@ -2,13 +2,14 @@
 require 'spec_helper'
 
 class Dummy
-  include DelegateIt
+  extend DelegateIt
   delegate :name, :surname, to: :name_delegate
   delegate :hello, to: :no_exist, allow_nil: true
   delegate :there, to: :there_delegate, allow_nil: true
   delegate :one, to: :args_delegate
   delegate :print, to: :args_delegate
   delegate :secret, to: :keeper
+  delegate :i_am_not, to: :no_exist
 
   def name_delegate
     Struct.new(:name, :surname).new('name_val', 'surname_val')
@@ -63,6 +64,14 @@ describe 'DelegateIt' do
     end
   end
 
+  describe "nonexisting delegate" do
+    it "raises an error" do
+      expect do
+        subject.i_am_not
+      end.to raise_error
+    end
+  end
+
   describe "private delegators" do
     it "works" do
       expect(subject.secret).to eq 42
@@ -72,7 +81,9 @@ describe 'DelegateIt' do
   describe "allow_nil case" do
     context "receiver is nil" do
       it "returns nil" do
-        expect(subject.hello).to eq nil
+        expect do
+          subject.hello
+        end.to raise_error
       end
     end
 

@@ -14,10 +14,14 @@ gem 'delegate_it'
 
 ```` ruby
 class Offer
-  include DelegateIt
+  extend DelegateIt
 
   delegate :name, :description, to: :product
   delegate :brand, to: :manufacturer, allow_nil: true
+
+  def manufacturer
+    nil
+  end
 
   private
 
