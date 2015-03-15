@@ -17,7 +17,7 @@ module DelegateIt
     end.first
 
     if setting
-      receiver = if self.respond_to?(setting.options[:to])
+      receiver = if self.respond_to?(setting.options[:to], true)
         self.send(setting.options[:to])
       else
         nil

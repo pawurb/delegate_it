@@ -8,6 +8,7 @@ class Dummy
   delegate :there, to: :there_delegate, allow_nil: true
   delegate :one, to: :args_delegate
   delegate :print, to: :args_delegate
+  delegate :secret, to: :keeper
 
   def name_delegate
     Struct.new(:name, :surname).new('name_val', 'surname_val')
@@ -29,6 +30,12 @@ class Dummy
     end
 
     dynamic_class.new
+  end
+
+  private
+
+  def keeper
+    Struct.new(:secret).new(42)
   end
 end
 
@@ -53,6 +60,12 @@ describe 'DelegateIt' do
       it "works with more params" do
         expect(subject.print('more', 3)).to eq 'more more more'
       end
+    end
+  end
+
+  describe "private delegators" do
+    it "works" do
+      expect(subject.secret).to eq 42
     end
   end
 
