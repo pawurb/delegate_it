@@ -12,7 +12,7 @@ gem 'delegate_it'
 
 ## Usage
 
-```` ruby
+````ruby
 require 'delegate_it'
 
 class Cowboy
