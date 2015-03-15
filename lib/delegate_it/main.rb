@@ -23,9 +23,7 @@ module DelegateIt
         nil
       end
 
-      if receiver
-        receiver.send(method)
-      elsif setting.options[:allow_nil]
+      if setting.options[:allow_nil] && !receiver
         nil
       else
         receiver.send(method)

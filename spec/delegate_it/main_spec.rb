@@ -41,20 +41,6 @@ describe 'DelegateIt' do
     end
   end
 
-  describe "specifying prefix" do
-    context "prefixing by delegate name" do
-      it "executes the correctc method on delegate" do
-
-      end
-    end
-
-    context "custom prefix value" do
-      it "executes the correctc method on delegate" do
-
-      end
-    end
-  end
-
   describe "method does not exist" do
     it "raises no_method error" do
       expect do
