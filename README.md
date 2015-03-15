@@ -1,4 +1,4 @@
-# Delegate it
+#Delegate it [![Build Status](https://travis-ci.org/pawurb/delegate_it.png)](https://travis-ci.org/pawurb/delegate_it) [![Gem Version](https://badge.fury.io/rb/delegate_it.png)](http://badge.fury.io/rb/delegate_it) [![Coverage Status](https://coveralls.io/repos/pawurb/delegate_it/badge.png)](https://coveralls.io/r/pawurb/delegate_it)
 
 delegate_it gem provides an easy way to use ActiveSupport like `delegate` method in your non Rails projects.
 
