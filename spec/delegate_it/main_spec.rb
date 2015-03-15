@@ -10,6 +10,8 @@ class Dummy
   delegate :print, to: :args_delegate
   delegate :secret, to: :keeper
   delegate :i_am_not, to: :no_exist
+  delegate :price, to: :offer, prefix: true
+  delegate :cost, to: :offer, prefix: :delivery
 
   def name_delegate
     Struct.new(:name, :surname).new('name_val', 'surname_val')
@@ -31,6 +33,10 @@ class Dummy
     end
 
     dynamic_class.new
+  end
+
+  def offer
+    Struct.new(:price, :cost).new(123, 456)
   end
 
   private
@@ -75,6 +81,20 @@ describe 'DelegateIt' do
   describe "private delegators" do
     it "works" do
       expect(subject.secret).to eq 42
+    end
+  end
+
+  describe "prefixes" do
+    context "default value" do
+      it "prefixes method name with delegate name" do
+        expect(subject.offer_price).to eq 123
+      end
+    end
+
+    context "custom value" do
+      it "prefixes method name with it" do
+        expect(subject.delivery_cost).to eq 456
+      end
     end
   end
 
