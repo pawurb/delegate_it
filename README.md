@@ -16,14 +16,22 @@ gem 'delegate_it'
 class Offer
   include DelegateIt
 
-  delegate :name, :description, to: :product, allow_nil: true
+  delegate :name, :description, to: :product
+  delegate :brand, to: :manufacturer, allow_nil: true
 
   private
 
   def product
-    ...
+    Struct.new(:name, :description)
+    .new('Great product', 'Awesome!')
   end
 end
+
+offer = Offer.new
+offer.name # => 'Great product'
+offer.description # => 'Awesome!'
+offer.brand # => nil
+
 ````
 
 ### Supported options
