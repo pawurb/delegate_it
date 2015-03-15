@@ -1,10 +1,23 @@
 #encoding: UTF-8
 require 'spec_helper'
 
+class Dummy
+  extend DelegateIt
+  delegate :name, to: :has_name
+
+  def has_name
+    Struct.new(:name).new('name')
+  end
+end
+
 describe 'DelegateIt' do
-  describe "logic" do
+  subject do
+    Dummy.new
+  end
+
+  describe "standard delegation" do
     it "works" do
-      expect(2+2).to eq 4
+      expect(subject.name).to eq 'name'
     end
   end
 end
