@@ -11,7 +11,7 @@ module DelegateIt
     end
   end
 
-  def method_missing(method, *)
+  def method_missing(method, *args)
     setting = @@delegated_settings.select do |s|
       s.name == method
     end.first
@@ -26,7 +26,7 @@ module DelegateIt
       if setting.options[:allow_nil] && !receiver
         nil
       else
-        receiver.send(method)
+        receiver.send(method, *args)
       end
     else
       super
