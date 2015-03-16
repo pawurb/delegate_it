@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = DelegateIt::VERSION
   gem.authors       = ["pawurb"]
   gem.email         = ["p.urbanek89@gmail.com"]
-  gem.summary       = %q{ Use delegate method without ActiveSupport }
-  gem.description   = %q{ Delegate_it gem provides an easy way to use ActiveSupport like delegate method in your non Rails projects }
+  gem.summary       = %q{ A drop in replacement for ActiveSupport delegate method in non Rails projects. }
+  gem.description   = %q{ delegate_it gem provides an easy way to use ActiveSupport like delegate method in your non Rails projects. }
   gem.homepage      = "http://github.com/pawurb/delegate_it"
   gem.files         = `git ls-files`.split("\n")
   gem.test_files    = gem.files.grep(%r{^(spec)/})
