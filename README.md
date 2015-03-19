@@ -41,7 +41,3 @@ cowboy.gun_bullets # => nil
 
 `prefix: true` - prefix delegated method name with the delegate or custom name.
 
-
-### Status
-
-PRs are welcome.
